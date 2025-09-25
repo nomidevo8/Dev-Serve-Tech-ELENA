@@ -8,6 +8,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+
+define('DEV_PLUGIN_VERSION', time());
 // Load widget class
 function eeb_register_widget( $widgets_manager) {
     require_once( __DIR__ . '/classes/widgets/widget-expand-box.php' );
@@ -24,14 +26,14 @@ function eeb_assets() {
         'eeb-toggle',
         plugins_url( 'assets/js/toggle.js', __FILE__ ),
         [ 'jquery' ],
-        '1.0.0154',
+        DEV_PLUGIN_VERSION,
         true
     );
     wp_enqueue_style(
         'eeb-style',
         plugins_url( 'assets/css/style.css', __FILE__ ),
         [],
-        '1.00114256'
+        DEV_PLUGIN_VERSION
     );
 }
 add_action( 'wp_enqueue_scripts', 'eeb_assets' );
